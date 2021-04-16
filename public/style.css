@@ -1,0 +1,19 @@
+body{
+  background-color: #a89767;
+  color: #21201c;
+  font-family: "Roboto Mono", Monospace;
+}
+
+header {
+  padding: 10px;
+  border-radius: 25px;
+  background-color: #e6d870;
+}
+
+.border {
+  padding: 15px;
+  border-radius: 25px;
+  background-color: #e6d870;
+  border: 2px solid black;
+  
+}
