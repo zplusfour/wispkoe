@@ -1,10 +1,10 @@
 const express = require('express');
-const cors = require('cors');
 const bodyParser = require('body-parser');
 const app = express();
 const fs = require("fs");
 const io = require("socket.io");
 const rateLimit = require("express-rate-limit");
+
 
 app.use(express.static('public'));
 app.listen(3000);
@@ -36,5 +36,4 @@ app.post('/new-post', postLimit, function (req, res) {
   
   });
   });
-    
   });
