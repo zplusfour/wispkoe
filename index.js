@@ -1,3 +1,5 @@
+
+const referer = process.env['referer_needed_url']
 const express = require('express');
 const os = require("os");
 const cors = require('cors');
@@ -7,20 +9,18 @@ const fs = require("fs");
 const io = require("socket.io");
 
 
+
 app.use(express.static('public'));
 app.listen(3000);
 
 app.use(bodyParser.urlencoded({
    extended: false
 }));
-app.use(cors({
-  origin: 'https://wispkoe.repl.co/'
-}));
 app.use(bodyParser.json());
 
 app.post('/new-post', function (req, res) {
    
-   if(req.get('referer') == 'https://29e5be10-b642-4d0a-9da1-ffb715d4c97c.id.repl.co/'){
+   if(req.get('referer') == referer){
        var post = JSON.stringify(req.body);
   
   res.redirect("https://wispkoe.repl.co");
