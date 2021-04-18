@@ -1,75 +1,78 @@
 <!DOCTYPE html>
-<html> 
+<html>
   <head>
-    <title>
-      Wispkoe
-    </title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wispkoe</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#a69f92" />
-    <meta name="author" content="Ved Rane">
-    <meta name="description" content="Wispkoe is a no-login bulletin where you can speak your mind!">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-<meta name="apple-mobile-web-app-title" content="Wispkoe">
-<meta name="application-name" content="Wispkoe">
-<meta name="msapplication-TileColor" content="#8d784b">
+    <meta name="author" content="Ved Rane" />
+    <meta
+      name="description"
+      content="Wispkoe is a no-login bulletin where you can speak your mind!"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
+    <meta name="apple-mobile-web-app-title" content="Wispkoe" />
+    <meta name="application-name" content="Wispkoe" />
+    <meta name="msapplication-TileColor" content="#8d784b" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
   <body>
-    <link href="style.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet" />
     <header>
-    <div id="header">
-      <a href="/"><img src="logo.png" alt="Logo" width="30%"></a>
-    <p>Little public bulletin</p><a href="api.html">api</a>
-    <a href="about.html">about</a>    <a href="tos.html">TOS</a></div>
+      <div id="header">
+        <a href="/"><img src="logo.png" alt="Logo" width="30%" /></a>
+        <p>Little public bulletin</p>
+        <a href="api.html">api</a> <a href="about.html">about</a>
+        <a href="tos.html">TOS</a>
+      </div>
     </header>
-    <br>
+    <br />
     <div class="border">
-    <form action="/new-post" method="POST">
-      <label for="title">
-        Title:
-      </label>
-      <input name="title" id="title" type="text" required><br>
-      <label for="username" >Username:</label>
-      <input name="username" id="username" type="text" required><br> 
-      <label for="content">
-        Content:
-      </label><br>
-      <textarea rows="20" cols="30" id="content" name="content">
-      </textarea><br>
-      <input type="submit" value="Post!">
-      </form></div>
-      <br>
-      <div class="x" id="x"></div>
-      <script>
-      $.getJSON("posts.json", function(data){
-        
+      <form action="/new-post" method="POST">
+        <label for="title"> Title: </label>
+        <input name="title" id="title" type="text" required /><br />
+        <label for="username">Username:</label>
+        <input name="username" id="username" type="text" required /><br />
+        <label for="content"> Content: </label><br />
+        <textarea rows="20" cols="30" id="content" name="content"> </textarea
+        ><br />
+        <input type="submit" value="Post!" />
+      </form>
+    </div>
+    <br />
+    <div class="x" id="x"></div>
+    <script>
+      $.getJSON("posts.json", function (data) {
         var obj = JSON.parse(JSON.stringify(data));
-        
-        x = document.getElementById("x")
-        
-    for (i in obj) {
 
-      var newObj = JSON.parse(obj[i])
-      
-      var title = newObj.title.replace(/(<([^>]+)>)/ig,"");
-      var username = newObj.username.replace(/(<([^>]+)>)/ig,"");
-      var content = newObj.content.replace(/(<([^>]+)>)/ig,"");
-      
-      var post = "<div class=\"border\"><h2>"+title+"</h2><h5>By "+username+"</h5><p>"+content+"</p></div><br>"
-      
-    var cont = document.createElement("div");
-      cont.innerHTML = post;
-      
-      
-      x.insertBefore(cont, x.firstChild);
-    }
-      })
-      </script>
-      <p>Copyright <a href="https://replit.com/@wispkoe">@GetDevVed</a></p>
+        x = document.getElementById("x");
+
+        for (i in obj) {
+          var newObj = JSON.parse(obj[i]);
+
+          var title = newObj.title.replace(/(<([^>]+)>)/gi, "");
+          var username = newObj.username.replace(/(<([^>]+)>)/gi, "");
+          var content = newObj.content.replace(/(<([^>]+)>)/gi, "");
+
+          var post =
+            '<div class="border"><h2>' +
+            title +
+            "</h2><h5>By " +
+            username +
+            "</h5><p>" +
+            content +
+            "</p></div><br>";
+
+          var cont = document.createElement("div");
+          cont.innerHTML = post;
+
+          x.insertBefore(cont, x.firstChild);
+        }
+      });
+    </script>
+    <p>Copyright <a href="https://replit.com/@wispkoe">@GetDevVed</a></p>
   </body>
-  
 </html>
